@@ -2,22 +2,31 @@
 
 **Legislation as code.** Every law as a Markdown file. Every reform as a Git commit.
 
-Legalize turns official legislation into version-controlled, machine-readable data. Browse the law, `git log` its history, `git diff` any reform — see exactly what changed, when, and why.
+Legalize turns official legislation into version-controlled, machine-readable data. Browse, search, diff, and build on structured legal data from multiple countries.
+
+**[legalize.dev](https://legalize.dev)** — Browse laws, see diffs, search across legislation.
 
 ## Countries
 
-| Country | Repo | Laws | Status |
-|---------|------|------|--------|
-| Spain | [legalize-es](https://github.com/legalize-dev/legalize-es) | 8,600+ | Available |
-| France | [legalize-fr](https://github.com/legalize-dev/legalize-fr) | — | Coming soon |
-| United Kingdom | legalize-uk | — | Coming soon |
-| Germany | legalize-de | — | Coming soon |
+| Country | Repo | Laws | Source | Status |
+|---------|------|------|--------|--------|
+| 🇪🇸 Spain | [legalize-es](https://github.com/legalize-dev/legalize-es) | 8,642 | [BOE](https://www.boe.es/) | ✅ Live |
+| 🇫🇷 France | [legalize-fr](https://github.com/legalize-dev/legalize-fr) | 80 codes | [Légifrance](https://www.legifrance.gouv.fr/) | 🚧 Beta |
+| 🇩🇪 Germany | — | — | [BGBL](https://www.bgbl.de/) | 🔜 Help wanted |
+| 🇵🇹 Portugal | — | — | [DRE](https://dre.pt/) | 🔜 Help wanted |
+| 🇸🇪 Sweden | — | — | [Riksdagen](https://www.riksdagen.se/) | 🔜 Help wanted |
+| 🇫🇮 Finland | — | — | [Finlex](https://www.finlex.fi/) | 🔜 Help wanted |
+| 🇳🇱 Netherlands | — | — | [Overheid.nl](https://www.overheid.nl/) | 🔜 Help wanted |
+| 🇧🇷 Brazil | — | — | [LeXML](https://www.lexml.gov.br/) | 🔜 Help wanted |
+| 🇺🇸 USA | — | — | — | 🔜 Help wanted |
+
+**Want to add your country?** See the [step-by-step guide](https://github.com/legalize-dev/legalize-pipeline/blob/main/docs/ADDING_A_COUNTRY.md).
 
 ## How it works
 
-Each law is a Markdown file with YAML frontmatter. When a reform is published, the file is updated and committed with the official publication date. The commit message includes the reform identifier and a link to the source.
+Each law is a Markdown file with YAML frontmatter. When a reform is published, the file is updated and committed with the official publication date.
 
-**Standard Git tools become legal research tools:**
+Standard Git tools become legal research tools:
 
 ```bash
 # Clone Spanish legislation
@@ -33,59 +42,43 @@ git log --oneline -- spain/BOE-A-1978-31229.md
 git diff 6660bcf^..6660bcf -- spain/BOE-A-1978-31229.md
 ```
 
-## File format
+## Repos
 
-Each file starts with YAML frontmatter:
-
-```yaml
----
-titulo: "Constitución Española"
-identificador: "BOE-A-1978-31229"
-pais: "es"
-rango: "constitucion"
-fecha_publicacion: "1978-12-29"
-ultima_actualizacion: "2024-02-17"
-estado: "vigente"
-fuente: "https://www.boe.es/eli/es/c/1978/12/27/(1)"
----
-```
-
-The body is the full text of the law in Markdown.
+| Repo | What |
+|------|------|
+| **[legalize](https://github.com/legalize-dev/legalize)** | This repo. Index, docs, overview. |
+| **[legalize-pipeline](https://github.com/legalize-dev/legalize-pipeline)** | The engine. Fetches, parses, and commits legislation. |
+| **[legalize-es](https://github.com/legalize-dev/legalize-es)** | Spanish laws as Markdown + git history. |
+| **[legalize-fr](https://github.com/legalize-dev/legalize-fr)** | French codes as Markdown + git history. |
 
 ## Why
 
-Legal texts are amended constantly, but tracking those changes is surprisingly hard. Official sources publish consolidated versions with no easy way to compare them. Commercial providers charge hundreds of euros per month for access to version history.
+Legal texts are amended constantly, but tracking changes is hard. Official sources publish consolidated versions with no way to compare. Commercial providers charge hundreds per month for version history.
 
-Legalize is **open legal infrastructure**:
+Legalize is open legal infrastructure:
 
-- **For developers** — build legal tools on structured, versioned data
-- **For researchers & journalists** — explore the evolution of legislation with standard tools
-- **For citizens** — see how the laws that affect you have changed over time
-
-## API
-
-Looking for programmatic access? The Legalize API is coming soon at [legalize.dev](https://legalize.dev) — search, filter, compare versions, and get notified when laws change.
-
-## Data sources
-
-All content is sourced from official government publications and linked back to the original. The legislative text is public domain. These repositories add structure, version control, and metadata — not original content.
-
-Legalize uses the bulletin processing engine from [BoletinClaro.es](https://boletinclaro.es), a platform that makes Spain's official bulletins accessible and understandable.
+- **For developers** — structured, versioned legal data with a REST API
+- **For researchers and journalists** — explore the evolution of legislation with git
+- **For citizens** — see how the laws that affect you have changed
 
 ## Contributing
 
-Found an error in a consolidated text? A missing reform? Open an issue in the relevant country repo with the law name, article number, and the official source showing the correct version.
+The main contribution is adding a new country. Fork [legalize-pipeline](https://github.com/legalize-dev/legalize-pipeline), follow the [guide](https://github.com/legalize-dev/legalize-pipeline/blob/main/docs/ADDING_A_COUNTRY.md), and open a PR.
 
-## Author
+Found an error in a law text? Open an issue in the relevant country repo with the law name, article, and the official source showing the correct version.
 
-Created by [Enrique Lopez](https://enriquelopez.eu).
+## Support
+
+Legalize is open source and free. If you want to help fund hosting and development:
+
+- [Open Collective](https://opencollective.com/legalize)
+- [Buy me a coffee](https://buymeacoffee.com/elopcast)
 
 ## License
 
 Legislative content: public domain (sourced from official government publications).
-
 Repository structure, metadata, and tooling: [MIT](LICENSE).
 
 ---
 
-A project by [Enrique Lopez](https://enriquelopez.eu) · Powered by [BoletinClaro.es](https://boletinclaro.es) · [legalize.dev](https://legalize.dev)
+Created by [Enrique Lopez](https://enriquelopez.eu) · [legalize.dev](https://legalize.dev)
