@@ -10,11 +10,12 @@ Legalize turns official legislation into version-controlled, machine-readable da
 
 | Country | Repo | Laws | Source | Status |
 |---------|------|------|--------|--------|
-| 🇪🇸 Spain | [legalize-es](https://github.com/legalize-dev/legalize-es) | 8,642 | [BOE](https://www.boe.es/) | ✅ Live |
+| 🇪🇸 Spain | [legalize-es](https://github.com/legalize-dev/legalize-es) | 12,231 | [BOE](https://www.boe.es/) | ✅ Live |
+| 🇸🇪 Sweden | [legalize-se](https://github.com/legalize-dev/legalize-se) | 9,701 | [Riksdagen](https://data.riksdagen.se/) | ✅ Live |
+| 🇰🇷 South Korea | [legalize-kr](https://github.com/9bow/legalize-kr) | 5,575 | [law.go.kr](https://open.law.go.kr) | ✅ Community |
 | 🇫🇷 France | [legalize-fr](https://github.com/legalize-dev/legalize-fr) | 80 codes | [Légifrance](https://www.legifrance.gouv.fr/) | 🚧 Beta |
 | 🇩🇪 Germany | — | — | [BGBL](https://www.bgbl.de/) | 🔜 Help wanted |
 | 🇵🇹 Portugal | — | — | [DRE](https://dre.pt/) | 🔜 Help wanted |
-| 🇸🇪 Sweden | — | — | [Riksdagen](https://www.riksdagen.se/) | 🔜 Help wanted |
 | 🇫🇮 Finland | — | — | [Finlex](https://www.finlex.fi/) | 🔜 Help wanted |
 | 🇳🇱 Netherlands | — | — | [Overheid.nl](https://www.overheid.nl/) | 🔜 Help wanted |
 | 🇧🇷 Brazil | — | — | [LeXML](https://www.lexml.gov.br/) | 🔜 Help wanted |
@@ -48,8 +49,10 @@ git diff 6660bcf^..6660bcf -- spain/BOE-A-1978-31229.md
 |------|------|
 | **[legalize](https://github.com/legalize-dev/legalize)** | This repo. Index, docs, overview. |
 | **[legalize-pipeline](https://github.com/legalize-dev/legalize-pipeline)** | The engine. Fetches, parses, and commits legislation. |
-| **[legalize-es](https://github.com/legalize-dev/legalize-es)** | Spanish laws as Markdown + git history. |
-| **[legalize-fr](https://github.com/legalize-dev/legalize-fr)** | French codes as Markdown + git history. |
+| **[legalize-es](https://github.com/legalize-dev/legalize-es)** | Spanish laws (12,231 norms + 17 autonomous communities). |
+| **[legalize-se](https://github.com/legalize-dev/legalize-se)** | Swedish statutes (9,701 laws). |
+| **[legalize-fr](https://github.com/legalize-dev/legalize-fr)** | French codes (80 codes, bootstrap in progress). |
+| **[legalize-kr](https://github.com/9bow/legalize-kr)** | South Korean laws (5,575 laws). Community contribution by [@9bow](https://github.com/9bow). |
 
 ## Why
 
@@ -63,7 +66,9 @@ Legalize is open legal infrastructure:
 
 ## Contributing
 
-The main contribution is adding a new country. Fork [legalize-pipeline](https://github.com/legalize-dev/legalize-pipeline), follow the [guide](https://github.com/legalize-dev/legalize-pipeline/blob/main/docs/ADDING_A_COUNTRY.md), and open a PR.
+The main contribution is adding a new country. Read the [format spec](SPEC.md) for the minimal contract, then follow the [step-by-step guide](https://github.com/legalize-dev/legalize-pipeline/blob/main/ADDING_A_COUNTRY.md).
+
+You can use the shared [legalize-pipeline](https://github.com/legalize-dev/legalize-pipeline) or build your own pipeline — as long as the output follows the spec. South Korea was built with an independent pipeline and it works great.
 
 Found an error in a law text? Open an issue in the relevant country repo with the law name, article, and the official source showing the correct version.
 
